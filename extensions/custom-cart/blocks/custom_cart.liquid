@@ -2,7 +2,15 @@
 <script src="{{ 'custom_cart_drawer.js' | asset_url }}" defer></script>
 
 <div id="custom-cart-container">
-  <custom-cart-drawer data-item-count = {{ cart.item_count }} />
+  <custom-cart-drawer>
+    <p>Cart Item Count: <span id="cart-item-count">{{ cart.item_count }}</span></p>
+    <p>Item List:</p>
+    <ul id="cart-item-list">
+      {% for item in cart.items %}
+      <li>{{ item.title }} | qty: {{ item.quantity }}</li>
+      {% endfor %}
+    </ul>
+  </custom-cart-drawer>
 </div>
 
 {% schema %}
