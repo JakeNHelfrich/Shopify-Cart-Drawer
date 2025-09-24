@@ -1,0 +1,15 @@
+{{ 'custom_cart_drawer.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'custom_cart_drawer.js' | asset_url }}" defer></script>
+
+<div id="custom-cart-container">
+  <custom-cart-drawer data-item-count = {{ cart.item_count }} />
+</div>
+
+{% schema %}
+{
+  "name": "Custom Shopping Cart",
+  "target": "body",
+  "settings": []
+}
+{% endschema %}
+
