@@ -5,5 +5,18 @@ custom-cart-drawer {
     background-color: white;
     height: 100vh;
     width: 20vw;
+    padding: 12.5px;
     z-index: 999; /* NB: A hacky way to ensure the cart drawer is always painted on top. */
+}
+
+custom-cart-drawer.closed {
+    right: -20vw;
+}
+
+custom-cart-drawer.opened {
+    right: 0;
+}
+
+custom-cart-drawer:hover {
+    cursor: pointer;
 }

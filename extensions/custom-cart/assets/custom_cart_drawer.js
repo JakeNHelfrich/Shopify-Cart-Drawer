@@ -38,14 +38,23 @@ class CustomCartDrawer extends HTMLElement {
     }
 
     connectedCallback() {
-        let dawnCartDrawerButton = document.querySelector("#cart-icon-bubble");
-        if(!dawnCartDrawerButton) return;
+        let vesselCartDrawerButton = document.querySelector(".action__cart");
+        if(!vesselCartDrawerButton) return;
 
-        dawnCartDrawerButton.addEventListener('click', (e) => {
+        vesselCartDrawerButton.addEventListener('click', (e) => {
             e.preventDefault();
-
-            console.log('click!');
+            this.toggleDrawer();
         })
+
+
+        this.querySelector('h1').addEventListener(('click'), () => {
+            this.toggleDrawer();
+        });
+    }
+
+    toggleDrawer() {
+        const isClosed = this.classList.contains('closed');
+        this.className = isClosed ? 'opened' : 'closed';
     }
 
     async updateCart() {
