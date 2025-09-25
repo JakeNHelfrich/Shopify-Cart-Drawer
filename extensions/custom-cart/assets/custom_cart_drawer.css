@@ -9,11 +9,11 @@ custom-cart-drawer {
     z-index: 999; /* NB: A hacky way to ensure the cart drawer is always painted on top. */
 }
 
-custom-cart-drawer.closed {
+custom-cart-drawer.--closed {
     right: -20vw;
 }
 
-custom-cart-drawer.opened {
+customn-cart-drawer.--opened {
     right: 0;
 }
 

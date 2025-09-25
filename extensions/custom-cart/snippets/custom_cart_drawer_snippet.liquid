@@ -1,10 +1,10 @@
 {{ 'custom_cart_drawer.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'custom_cart_drawer.js' | asset_url }}" defer></script>
 
-<custom-cart-drawer class="closed">
-    <h1>Cart: <span id="cart-item-count">{{ cart.item_count }}</span></h1>
+<custom-cart-drawer class="--closed">
+    <h1>Cart: <span id="cart-drawer__item-count">{{ cart.item_count }}</span></h1>
     <hr />
-    <div id="cart-item-list">
+    <div id="cart-drawer__item-list">
       {% for item in cart.items %}
       <p>{{ item.title }} | qty: {{ item.quantity }}</p>
       {% endfor %}

@@ -53,8 +53,8 @@ class CustomCartDrawer extends HTMLElement {
     }
 
     toggleDrawer() {
-        const isClosed = this.classList.contains('closed');
-        this.className = isClosed ? 'opened' : 'closed';
+        const isClosed = this.classList.contains('--closed');
+        this.className = isClosed ? '--opened' : '--closed';
     }
 
     async updateCart() {
@@ -62,7 +62,7 @@ class CustomCartDrawer extends HTMLElement {
         const cart = await response.json();
 
         const newItemCount = cart.item_count;
-        const itemCountSpan = this.querySelector("#cart-item-count");
+        const itemCountSpan = this.querySelector(".cart-drawer__item-count");
         itemCountSpan.textContent = newItemCount;
 
         const items = [];
@@ -72,7 +72,7 @@ class CustomCartDrawer extends HTMLElement {
             items.push(itemElement);
         }
 
-        const itemList = this.querySelector("#cart-item-list");
+        const itemList = this.querySelector(".cart-drawer__item-list");
         itemList.replaceChildren(...items);
     } 
 }
