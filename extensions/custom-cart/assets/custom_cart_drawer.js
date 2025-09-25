@@ -58,9 +58,9 @@ class CustomCartDrawer extends HTMLElement {
 
         const items = [];
         for(const item of cart.items) {
-            const listElement = document.createElement('li');
-            listElement.innerText = `${item.title} | qty: ${item.quantity}`;
-            items.push(listElement);
+            const itemElement = document.createElement('p');
+            itemElement.innerText = `${item.title} | qty: ${item.quantity}`;
+            items.push(itemElement);
         }
 
         const itemList = this.querySelector("#cart-item-list");

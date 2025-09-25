@@ -1,14 +1,13 @@
 {{ 'custom_cart_drawer.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'custom_cart_drawer.js' | asset_url }}" defer></script>
 
-<div id="custom-cart-container">
-  <custom-cart-drawer>
-    <p>Cart Item Count: <span id="cart-item-count">{{ cart.item_count }}</span></p>
-    <p>Item List:</p>
-    <ul id="cart-item-list">
+<custom-cart-drawer>
+    <h1>Cart: <span id="cart-item-count">{{ cart.item_count }}</span></h1>
+    <hr />
+    <div>
       {% for item in cart.items %}
-      <li>{{ item.title }} | qty: {{ item.quantity }}</li>
+      <p>{{ item.title }} | qty: {{ item.quantity }}</p>
       {% endfor %}
-    </ul>
-  </custom-cart-drawer>
-</div>
+    </div>
+    <a href="/checkout">Checkout</a>
+</custom-cart-drawer>
