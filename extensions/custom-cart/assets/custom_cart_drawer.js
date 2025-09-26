@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.XMLHttpRequest.prototype.open = function(method, url, async, user, password) {
         this.addEventListener("readystatechange", () => {
             if(!url.endsWith("/cart/add.js") && !url.endsWith("/cart/add")) return;
+            if(!url.endsWith("/cart/change.js") && !url.endsWith("/cart/change")) return;
             if(this.readyState !== XMLHttpRequest.DONE) return;
             
             document.dispatchEvent(new CustomCartUpdatedEvent());
@@ -22,7 +23,11 @@ document.addEventListener('DOMContentLoaded', () => {
     window.fetch = function(resource, options) {
         const response = fetch.call(this, resource, options);
         response.then(() => {
-            if(resource.endsWith("/cart/add.js") || resource.endsWith("/cart/add")) {
+            if(resource.endsWith("/cart/add.js") ||
+                resource.endsWith("/cart/add") ||
+                resource.endsWith("/cart/change.js") ||
+                resource.endsWith("/cart/change")
+            ) {
                 document.dispatchEvent(new CustomCartUpdatedEvent());
             }
         });
@@ -73,6 +78,7 @@ class CustomCartDrawer extends HTMLElement {
             cartItem.setAttribute('data-image', item.image);
             cartItem.setAttribute('data-final-price', item.final_price);
             cartItem.setAttribute('data-final-line-price', item.final_line_price);
+            cartItem.setAttribute('data-key', item.key);
             items.push(cartItem);
         }
 
@@ -88,6 +94,7 @@ class CustomCartItem extends HTMLElement {
         const image = this.getAttribute('data-image');
         const finalPrice = this.getAttribute('data-final-price');
         const finalLinePrice = this.getAttribute('data-final-line-price');
+        const key = this.getAttribute('data-key');
 
         this.className = 'cart-item';
 
@@ -97,6 +104,20 @@ class CustomCartItem extends HTMLElement {
 
         const img = document.createElement('img');
         img.src = image;
+
+        this.addEventListener('click', async () => {
+            fetch(window.Shopify.routes.root + 'cart/change.js', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id: key,
+                    quantity: 0
+                })
+            })
+            
+        });
 
         this.appendChild(body);
         this.appendChild(img);
