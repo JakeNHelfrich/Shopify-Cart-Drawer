@@ -14,6 +14,9 @@
         <custom-cart-item
           data-title="{{ item.title }}"
           data-quantity="{{ item.quantity }}"
+          data-image="{{ item.image | image_url }}"
+          data-final-price="{{ item.final_price }}"
+          data-final-line-price="{{ item.final_line_price }}"
         ></custom-cart-item>
         {% endfor %}
       </div>

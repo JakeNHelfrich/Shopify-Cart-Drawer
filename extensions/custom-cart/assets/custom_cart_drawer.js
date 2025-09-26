@@ -70,6 +70,9 @@ class CustomCartDrawer extends HTMLElement {
             const cartItem = new CustomCartItem();
             cartItem.setAttribute('data-title', item.title);
             cartItem.setAttribute('data-quantity', item.quantity);
+            cartItem.setAttribute('data-image', item.image);
+            cartItem.setAttribute('data-final-price', item.final_price);
+            cartItem.setAttribute('data-final-line-price', item.final_line_price);
             items.push(cartItem);
         }
 
@@ -79,24 +82,24 @@ class CustomCartDrawer extends HTMLElement {
 }
 
 class CustomCartItem extends HTMLElement {
-    #title;
-    #quantity;
-
-    constructor() {
-        super();
-
-        this.#title = this.getAttribute('data-title');
-        this.#quantity = this.getAttribute('data-quantity');
-    }
-
     connectedCallback() {
+        const title = this.getAttribute('data-title');
+        const quantity = this.getAttribute('data-quantity');
+        const image = this.getAttribute('data-image');
+        const finalPrice = this.getAttribute('data-final-price');
+        const finalLinePrice = this.getAttribute('data-final-line-price');
+
         this.className = 'cart-item';
 
         const body = document.createElement('p');
         body.className = 'cart-item__body';
-        body.innerText = `${this.#title} | qty: ${this.#quantity}`;
+        body.innerText = `${title} | qty: ${quantity} | ${finalLinePrice} | ${finalPrice}`;
+
+        const img = document.createElement('img');
+        img.src = image;
 
         this.appendChild(body);
+        this.appendChild(img);
     }
 }
 
