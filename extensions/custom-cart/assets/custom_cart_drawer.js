@@ -90,7 +90,7 @@ class CustomCartDrawer extends HTMLElement {
 class CustomCartItem extends HTMLElement {
     connectedCallback() {
         const title = this.getAttribute('data-title');
-        const quantity = this.getAttribute('data-quantity');
+        const quantity = Number(this.getAttribute('data-quantity'));
         const image = this.getAttribute('data-image');
         const finalPrice = this.getAttribute('data-final-price');
         const finalLinePrice = this.getAttribute('data-final-line-price');
@@ -121,9 +121,44 @@ class CustomCartItem extends HTMLElement {
             
         });
 
+        const decreaseQuantityButton = document.createElement('button');
+        decreaseQuantityButton.innerText = 'Decrease Quantity';
+        decreaseQuantityButton.addEventListener('click', async () => {
+            fetch(window.Shopify.routes.root + 'cart/change.js', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id: key,
+                    quantity: quantity - 1
+                })
+            })
+            
+        });
+
+        const increaseQuantityButton = document.createElement('button');
+        increaseQuantityButton.innerText = 'Increase Quantity';
+        increaseQuantityButton.addEventListener('click', async () => {
+            console.log(quantity, typeof quantity, quantity + 1);
+            fetch(window.Shopify.routes.root + 'cart/change.js', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id: key,
+                    quantity: quantity + 1
+                })
+            })
+            
+        });
+
         this.appendChild(body);
         this.appendChild(img);
         this.appendChild(removeFromCartButton);
+        this.appendChild(decreaseQuantityButton);
+        this.appendChild(increaseQuantityButton);
     }
 }
 
