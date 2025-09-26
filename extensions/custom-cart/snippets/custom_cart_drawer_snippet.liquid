@@ -1,7 +1,7 @@
 {{ 'custom_cart_drawer.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'custom_cart_drawer.js' | asset_url }}" defer></script>
 
-<custom-cart-drawer class="--closed">
+<custom-cart-drawer class="--initial-closed">
     <h1>Cart: <span id="cart-drawer__item-count">{{ cart.item_count }}</span></h1>
     <hr />
     <div id="cart-drawer__item-list">

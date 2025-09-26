@@ -53,7 +53,7 @@ class CustomCartDrawer extends HTMLElement {
     }
 
     toggleDrawer() {
-        const isClosed = this.classList.contains('--closed');
+        const isClosed = this.className === '--closed' || this.className === "--initial-closed"; // NB: --initial-closed is used to prevent the css keyframe from playing on load. 
         this.className = isClosed ? '--opened' : '--closed';
     }
 
@@ -75,6 +75,19 @@ class CustomCartDrawer extends HTMLElement {
         const itemList = this.querySelector(".cart-drawer__item-list");
         itemList.replaceChildren(...items);
     } 
+}
+
+class CustomCartItem extends HTMLElement {
+    #item = undefined;
+    constructor(cartItemBlob) {
+        super();
+
+        this.#item = cartItemBlob;
+    }
+
+    connectedCallback() {
+
+    }
 }
 
 customElements.define("custom-cart-drawer", CustomCartDrawer);

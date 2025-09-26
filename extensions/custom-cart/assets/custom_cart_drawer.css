@@ -1,8 +1,10 @@
 custom-cart-drawer {
     --drawer-width: 20vw;
+    --closed-position: calc(-1 * var(--drawer-width));
 
     position: fixed;
     top: 0;
+    right: var(--closed-position);
     background-color: white;
     height: 100vh;
     width: var(--drawer-width);
@@ -11,15 +13,37 @@ custom-cart-drawer {
 }
 
 @keyframes slide-in {
+    from {
+        right: 0;
+    }
 
+    to {
+        right: var(--closed-position);
+    }
+}
+
+custom-cart-drawer.--closed,
+custom-cart-drawer.--initial-closed {
+    right: var(--closed-position);
 }
 
 custom-cart-drawer.--closed {
-    right: calc(-1 * var(--drawer-width));
+    animation: 0.25s ease-in 0s slide-in;
+}
+
+@keyframes slide-out {
+    from {
+        right: var(--closed-position);
+    }
+
+    to {
+        right: 0;
+    }
 }
 
 custom-cart-drawer.--opened {
     right: 0;
+    animation: 0.25s ease-in 0s slide-out;
 }
 
 custom-cart-drawer:hover {
