@@ -46,6 +46,12 @@ custom-cart-drawer.--opened {
     animation: 0.25s ease-in 0s slide-out;
 }
 
-custom-cart-drawer:hover {
+.cart-drawer__close-button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.cart-drawer__close-button:hover {
     cursor: pointer;
 }

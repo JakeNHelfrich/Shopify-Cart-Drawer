@@ -47,7 +47,7 @@ class CustomCartDrawer extends HTMLElement {
         })
 
 
-        this.querySelector('h1').addEventListener(('click'), () => {
+        this.querySelector('.cart-drawer__close-button').addEventListener(('click'), () => {
             this.toggleDrawer();
         });
     }

@@ -1,4 +1,5 @@
 {{ 'custom_cart_drawer.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <script src="{{ 'custom_cart_drawer.js' | asset_url }}" defer></script>
 
 <custom-cart-drawer class="--initial-closed">
@@ -10,4 +11,5 @@
       {% endfor %}
     </div>
     <a href="/checkout">Checkout</a>
+    <i class="fa-solid fa-xmark cart-drawer__close-button"></i>
 </custom-cart-drawer>
