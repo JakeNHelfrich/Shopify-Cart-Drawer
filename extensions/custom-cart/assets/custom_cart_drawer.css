@@ -55,3 +55,31 @@ custom-cart-drawer.--opened {
 .cart-drawer__close-button:hover {
     cursor: pointer;
 }
+
+.cart-drawer__cart-header h1 {
+    margin-top: 5px;
+}
+
+.cart-drawer__cart-header h1 {
+    font-size: 4em;
+}
+
+.cart-drawer__cart-body {
+    margin: 25px 0px;
+}
+
+.cart-drawer__cart-footer {
+    display: flex; 
+    justify-content: center;
+}
+
+.cart-drawer__checkout-button {
+    display: block;
+    text-decoration: none;
+    width: 50%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 5%;
+    font-size: 1.25em;
+}

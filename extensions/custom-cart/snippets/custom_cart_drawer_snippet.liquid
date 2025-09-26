@@ -3,13 +3,19 @@
 <script src="{{ 'custom_cart_drawer.js' | asset_url }}" defer></script>
 
 <custom-cart-drawer class="--initial-closed">
-    <h1>Cart: <span id="cart-drawer__item-count">{{ cart.item_count }}</span></h1>
-    <hr />
-    <div id="cart-drawer__item-list">
-      {% for item in cart.items %}
-      <p>{{ item.title }} | qty: {{ item.quantity }}</p>
-      {% endfor %}
-    </div>
-    <a href="/checkout">Checkout</a>
     <i class="fa-solid fa-xmark cart-drawer__close-button"></i>
+    <div class="cart-drawer__cart-header">
+      <h1>Cart: <span id="cart-drawer__item-count">{{ cart.item_count }}</span></h1>
+    </div>
+    <hr />
+    <div class="cart-drawer__cart-body">
+      <div id="cart-drawer__item-list">
+        {% for item in cart.items %}
+        <p>{{ item.title }} | qty: {{ item.quantity }}</p>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="cart-drawer__cart-footer">
+      <a href="/checkout" class= "cart-drawer__checkout-button">Checkout</a>
+    </div>
 </custom-cart-drawer>
