@@ -105,7 +105,9 @@ class CustomCartItem extends HTMLElement {
         const img = document.createElement('img');
         img.src = image;
 
-        this.addEventListener('click', async () => {
+        const removeFromCartButton = document.createElement('button');
+        removeFromCartButton.innerText = 'Remove from Cart';
+        removeFromCartButton.addEventListener('click', async () => {
             fetch(window.Shopify.routes.root + 'cart/change.js', {
                 method: 'POST',
                 headers: {
@@ -121,6 +123,7 @@ class CustomCartItem extends HTMLElement {
 
         this.appendChild(body);
         this.appendChild(img);
+        this.appendChild(removeFromCartButton);
     }
 }
 
