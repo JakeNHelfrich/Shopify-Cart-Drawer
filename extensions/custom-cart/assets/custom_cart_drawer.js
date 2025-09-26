@@ -67,9 +67,10 @@ class CustomCartDrawer extends HTMLElement {
 
         const items = [];
         for(const item of cart.items) {
-            const itemElement = document.createElement('p');
-            itemElement.innerText = `${item.title} | qty: ${item.quantity}`;
-            items.push(itemElement);
+            const cartItem = new CustomCartItem();
+            cartItem.setAttribute('data-title', item.title);
+            cartItem.setAttribute('data-quantity', item.quantity);
+            items.push(cartItem);
         }
 
         const itemList = this.querySelector(".cart-drawer__item-list");
@@ -78,16 +79,26 @@ class CustomCartDrawer extends HTMLElement {
 }
 
 class CustomCartItem extends HTMLElement {
-    #item = undefined;
-    constructor(cartItemBlob) {
+    #title;
+    #quantity;
+
+    constructor() {
         super();
 
-        this.#item = cartItemBlob;
+        this.#title = this.getAttribute('data-title');
+        this.#quantity = this.getAttribute('data-quantity');
     }
 
     connectedCallback() {
+        this.className = 'cart-item';
 
+        const body = document.createElement('p');
+        body.className = 'cart-item__body';
+        body.innerText = `${this.#title} | qty: ${this.#quantity}`;
+
+        this.appendChild(body);
     }
 }
 
 customElements.define("custom-cart-drawer", CustomCartDrawer);
+customElements.define("custom-cart-item", CustomCartItem);
