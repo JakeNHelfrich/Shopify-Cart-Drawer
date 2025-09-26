@@ -1,19 +1,24 @@
 custom-cart-drawer {
+    --drawer-width: 20vw;
+
     position: fixed;
     top: 0;
-    right: 0;
     background-color: white;
     height: 100vh;
-    width: 20vw;
+    width: var(--drawer-width);
     padding: 12.5px;
     z-index: 999; /* NB: A hacky way to ensure the cart drawer is always painted on top. */
 }
 
-custom-cart-drawer.--closed {
-    right: -20vw;
+@keyframes slide-in {
+
 }
 
-customn-cart-drawer.--opened {
+custom-cart-drawer.--closed {
+    right: calc(-1 * var(--drawer-width));
+}
+
+custom-cart-drawer.--opened {
     right: 0;
 }
 
