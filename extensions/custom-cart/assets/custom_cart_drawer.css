@@ -61,7 +61,7 @@ custom-cart-drawer.--opened {
 }
 
 .cart-drawer__cart-header h1 {
-    font-size: 4em;
+    font-size: var(--cart-font-size);
 }
 
 .cart-drawer__cart-body {
@@ -77,8 +77,13 @@ custom-cart-drawer.--opened {
     display: block;
     text-decoration: none;
     width: 50%;
-    color: white;
     text-align: center;
-    border-radius: 5%;
-    font-size: 1.25em;
+    background-color: var(--cart-primary-colour);
+    font-size: var(--cart-font-size);
+    color: var(--cart-button-text-colour);
+    border-radius: var(--cart-border-radius);
+}
+
+custom-cart-item {
+    font-size: var(--cart-font-size);
 }

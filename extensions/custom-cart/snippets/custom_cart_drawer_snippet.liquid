@@ -2,6 +2,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <script src="{{ 'custom_cart_drawer.js' | asset_url }}" defer></script>
 
+<style>
+custom-cart-drawer {
+  --cart-font-size: {{ block.settings.font-size}}px;
+  --cart-primary-colour: {{ block.settings.primary-colour }};
+  --cart-button-text-colour: {{ block.settings.button-text-colour }};
+  --cart-border-radius: {{ block.settings.border-radius }}%;
+}
+</style>
 <custom-cart-drawer class="--initial-closed">
     <i class="fa-solid fa-xmark cart-drawer__close-button"></i>
     <div class="cart-drawer__cart-header">
@@ -22,10 +30,7 @@
         {% endfor %}
       </div>
     </div>
-    <div
-      class="cart-drawer__cart-footer"
-      style="background-color: {{ block.settings.primary-colour }}"
-    >
+    <div class="cart-drawer__cart-footer">
       <a href="/checkout" class= "cart-drawer__checkout-button">Checkout</a>
     </div>
 </custom-cart-drawer>
