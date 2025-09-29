@@ -140,7 +140,6 @@ class CustomCartItem extends HTMLElement {
         const increaseQuantityButton = document.createElement('button');
         increaseQuantityButton.innerText = 'Increase Quantity';
         increaseQuantityButton.addEventListener('click', async () => {
-            console.log(quantity, typeof quantity, quantity + 1);
             fetch(window.Shopify.routes.root + 'cart/change.js', {
                 method: 'POST',
                 headers: {

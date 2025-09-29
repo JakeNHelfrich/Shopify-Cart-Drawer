@@ -22,7 +22,10 @@
         {% endfor %}
       </div>
     </div>
-    <div class="cart-drawer__cart-footer">
+    <div
+      class="cart-drawer__cart-footer"
+      style="background-color: {{ block.settings.primary-colour }}"
+    >
       <a href="/checkout" class= "cart-drawer__checkout-button">Checkout</a>
     </div>
 </custom-cart-drawer>
